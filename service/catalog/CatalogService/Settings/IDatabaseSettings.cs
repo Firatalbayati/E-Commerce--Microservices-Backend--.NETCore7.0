@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MyCourse.Service.Catalog.Settings
 {
-    interface IDatabaseSettings
+    public interface IDatabaseSettings
     {
         public string CourseCollectionName { get; set; }
         public string CategoryCollectionName { get; set; }

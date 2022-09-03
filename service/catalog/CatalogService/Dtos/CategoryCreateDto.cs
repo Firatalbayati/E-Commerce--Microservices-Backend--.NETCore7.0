@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace MyCourse.Service.Catalog.Dtos
 {
-    public class CourseCreateCategory
+    public class CategoryCreateDto
     {
+        public string Id { get; set; }
         public string Name { get; set; }
     }
 }

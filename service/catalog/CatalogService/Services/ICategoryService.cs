@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace MyCourse.Service.Catalog.Services
 {
-    internal interface ICategoryService
+    public interface ICategoryService
     {
         Task<Response<List<CategoryDto>>> GetAllAsync();
-        Task<Response<CategoryDto>> CreateAsync(Category category);
         Task<Response<CategoryDto>> GetByIdAsync(string id);
+        Task<Response<CategoryDto>> CreateAsync(CategoryCreateDto categoryCreateDto);
+        Task<Response<NoContent>> UpdateAsync(CategoryUpdateDto categoryUpdateDto);
+        Task<Response<NoContent>> DeleteAsync(string id);
     }
 }

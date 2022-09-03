@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyCourse.Service.Catalog.Services
 {
-    internal interface ICourseService
+    public interface ICourseService
     {
          Task<Response<List<CourseDto>>> GetAllAsync();
          Task<Response<CourseDto>> GetByIdAsync(string id);

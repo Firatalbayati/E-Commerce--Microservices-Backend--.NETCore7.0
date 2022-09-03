@@ -4,14 +4,12 @@ using MyCourse.Shared.Dtos;
 using MongoDB.Driver;
 using MyCourse.Service.Catalog.Dtos;
 using MyCourse.Service.Catalog.Settings;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MyCourse.Service.Catalog.Services
 {
-    internal class CategoryService: ICategoryService
+    public class CategoryService: ICategoryService
     {
         private readonly IMongoCollection<Category> _categoryCollection;
 
@@ -31,12 +29,6 @@ namespace MyCourse.Service.Catalog.Services
             return Response<List<CategoryDto>>.Success(_mapper.Map<List<CategoryDto>>(categories), 200);
         }
 
-        public async Task<Response<CategoryDto>> CreateAsync(Category category)
-        {
-            await _categoryCollection.InsertOneAsync(category);
-            return Response<CategoryDto>.Success(_mapper.Map<CategoryDto>(category), 200);
-        }
-
         public async Task<Response<CategoryDto>> GetByIdAsync(string id)
         {
             var category = await _categoryCollection.Find<Category>(x => x.Id == id).FirstOrDefaultAsync();
@@ -49,5 +41,40 @@ namespace MyCourse.Service.Catalog.Services
             return Response<CategoryDto>.Success(_mapper.Map<CategoryDto>(category), 200);
         }
 
+        public async Task<Response<CategoryDto>> CreateAsync(CategoryCreateDto categoryCreateDto)
+        {
+            var newCategory = _mapper.Map<Category>(categoryCreateDto);
+            await _categoryCollection.InsertOneAsync(newCategory);
+
+            return Response<CategoryDto>.Success(_mapper.Map<CategoryDto>(newCategory), 200);
+        }
+
+        public async Task<Response<NoContent>> UpdateAsync(CategoryUpdateDto categoryUpdateDto)
+        {
+            var updateCategory = _mapper.Map<Category>(categoryUpdateDto);
+
+            var result = await _categoryCollection.FindOneAndReplaceAsync(x => x.Id == categoryUpdateDto.Id, updateCategory);
+
+            if (result == null)
+            {
+                return Response<NoContent>.Fail("Category not found", 404);
+            }
+
+            return Response<NoContent>.Success(204);
+        }
+
+        public async Task<Response<NoContent>> DeleteAsync(string id)
+        {
+            var result = await _categoryCollection.DeleteOneAsync(x => x.Id == id);
+
+            if (result.DeletedCount > 0)
+            {
+                return Response<NoContent>.Success(204);
+            }
+            else
+            {
+                return Response<NoContent>.Fail("Category not found", 404);
+            }
+        }
     }
 }
