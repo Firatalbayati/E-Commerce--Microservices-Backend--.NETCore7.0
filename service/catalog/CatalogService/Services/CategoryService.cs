@@ -15,7 +15,7 @@ namespace MyCourse.Service.Catalog.Services
 
         private readonly IMapper _mapper;
 
-        public CategoryService(IMongoCollection<Category>categoryCollection ,IMapper mapper, IDatabaseSettings databaseSettings)
+        public CategoryService(IMapper mapper, IDatabaseSettings databaseSettings)
         {
             var client = new MongoClient(databaseSettings.ConnectionString);
             var database = client.GetDatabase(databaseSettings.ConnectionString);
