@@ -22,7 +22,7 @@ namespace MyCourse.Service.Catalog.Services
         {
             var client = new MongoClient(databaseSettings.ConnectionString);
             var database = client.GetDatabase(databaseSettings.DatebaseName);
-            _courseCollection = database.GetCollection<Course>(databaseSettings.CategoryCollectionName);
+            _courseCollection = database.GetCollection<Course>(databaseSettings.CourseCollectionName);
             _categoryCollection = database.GetCollection<Category>(databaseSettings.CategoryCollectionName); 
 
             _mapper = mapper;
@@ -45,6 +45,7 @@ namespace MyCourse.Service.Catalog.Services
             }
 
             return Response<List<CourseDto>>.Success(_mapper.Map<List<CourseDto>>(courses), 200);
+
         }
 
         public async Task<Response<CourseDto>> GetByIdAsync(string id)
@@ -60,10 +61,10 @@ namespace MyCourse.Service.Catalog.Services
             return Response<CourseDto>.Success(_mapper.Map<CourseDto>(course), 200);
         }
 
-        public async Task<Response<List<CourseDto>>> GetAllByUserIdAsync(string UserId)
+        public async Task<Response<List<CourseDto>>> GetAllByUserIdAsync(string userId)
         {
 
-            var courses = await _courseCollection.Find<Course>(x => x.Id == UserId).ToListAsync();
+            var courses = await _courseCollection.Find<Course>(x => x.UserId == userId).ToListAsync(); 
 
             if (courses.Any()) 
             {

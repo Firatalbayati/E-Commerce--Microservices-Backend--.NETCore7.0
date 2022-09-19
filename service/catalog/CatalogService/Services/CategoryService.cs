@@ -18,7 +18,7 @@ namespace MyCourse.Service.Catalog.Services
         public CategoryService(IMapper mapper, IDatabaseSettings databaseSettings)
         {
             var client = new MongoClient(databaseSettings.ConnectionString);
-            var database = client.GetDatabase(databaseSettings.ConnectionString);
+            var database = client.GetDatabase(databaseSettings.DatebaseName);
             _categoryCollection = database.GetCollection <Category>(databaseSettings.CategoryCollectionName);
             _mapper = mapper;
         }

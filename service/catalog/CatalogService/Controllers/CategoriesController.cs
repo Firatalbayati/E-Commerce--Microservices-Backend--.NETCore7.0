@@ -54,7 +54,7 @@ namespace MyCourse.Service.Catalog.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
-            var response = await _categoryService.GetByIdAsync(id);
+            var response = await _categoryService.DeleteAsync(id);
             return CreateActionResultInstance(response);
         }
     }
