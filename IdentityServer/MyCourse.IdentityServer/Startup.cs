@@ -28,6 +28,8 @@ namespace MyCourse.IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalApiAuthentication();
+
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -81,6 +83,7 @@ namespace MyCourse.IdentityServer
 
             app.UseRouting();
             app.UseIdentityServer();
+            app.UseAuthorization();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
