@@ -17,17 +17,15 @@ namespace MyCourse.Service.PhotoStock.Controllers
     public class PhotosController : CustomBaseController
     {
 
-        [HttpPost]
-        public async Task<IActionResult> PhotoSave(IFormFile photo, CancellationToken cancellationToken)
+        [HttpPost("Save")]
+        public async Task<IActionResult> Save(IFormFile photo, CancellationToken cancellationToken)
         {
             if(photo != null && photo.Length > 0)
             {
                 var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/photos", photo.FileName);
 
-                using(var stream = new FileStream(path, FileMode.Create))
-                {
-                    await photo.CopyToAsync(stream, cancellationToken);
-                }
+                using var stream = new FileStream(path, FileMode.Create);
+                await photo.CopyToAsync(stream, cancellationToken);
 
                 var returnPath = "photos/" + photo.FileName;
 
@@ -38,8 +36,8 @@ namespace MyCourse.Service.PhotoStock.Controllers
             return CreateActionResultInstance(Response<PhotoDto>.Fail("Photo is empty", 400));
         }
 
-        [HttpDelete]
-        public IActionResult PhotoDelete(string photoUrl)
+        [HttpDelete("Delete")]
+        public IActionResult Delete(string photoUrl)
         {
             var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/photos",photoUrl);
 

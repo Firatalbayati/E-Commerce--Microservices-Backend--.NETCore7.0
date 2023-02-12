@@ -11,13 +11,13 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": false,
+      "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "MyCourse.Service.PhotoStock": {
+    "PhotoStockService": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,
