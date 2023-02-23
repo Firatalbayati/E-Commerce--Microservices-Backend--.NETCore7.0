@@ -30,6 +30,7 @@ namespace MyCourse.Service.Basket
 
         public IConfiguration Configuration { get; }
 
+        // For test
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
