@@ -31,10 +31,10 @@ namespace MyCourse.Service.Basket.Controllers
             return CreateActionResultInstance(await _basketService.GetBasket(_sharedIdentityService.GetUserId));
         }
 
-        [HttpPost("SaveOrUpdateBasket")]
-        public async Task<IActionResult> SaveOrUpdateBasket(BasketDto basketDto)
+        [HttpPost("CreateOrUpdateBasket")]
+        public async Task<IActionResult> CreateOrUpdateBasket(BasketDto basketDto)
         {
-            var response = await _basketService.SaveOrUpdate(basketDto);
+            var response = await _basketService.CreateOrUpdate(basketDto);
             return CreateActionResultInstance(response);
         }
 

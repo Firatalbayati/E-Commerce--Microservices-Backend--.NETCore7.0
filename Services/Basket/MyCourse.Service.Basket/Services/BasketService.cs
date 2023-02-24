@@ -17,29 +17,28 @@ namespace MyCourse.Service.Basket.Services
             _redisService = redisService;
         }
 
-        public async Task<Response<bool>> Delete(string userId)
-        {
-            var status = await _redisService.GetDB().KeyDeleteAsync(userId);
-            return status ? Response<bool>.Success(204) : Response<bool>.Fail("Basket Not Found", 404);
-        }
 
         public async Task<Response<BasketDto>> GetBasket(string userId)
         {
             var existBasket = await _redisService.GetDB().StringGetAsync(userId);
 
-            if(String.IsNullOrEmpty(existBasket))
-            {
+            if (String.IsNullOrEmpty(existBasket))
                 return Response<BasketDto>.Fail("Basket Not Found", 404);
-            }
 
             return Response<BasketDto>.Success(JsonSerializer.Deserialize<BasketDto>(existBasket), 200);
         }
 
-        public async Task<Response<bool>> SaveOrUpdate(BasketDto basketDto)
+        public async Task<Response<bool>> CreateOrUpdate(BasketDto basketDto)
         {
             var status = await _redisService.GetDB().StringSetAsync(basketDto.UserId, JsonSerializer.Serialize(basketDto));
 
             return status ? Response<bool>.Success(204) : Response<bool>.Fail("Basket Could Not Update Or Save", 500);
+        }
+
+        public async Task<Response<bool>> Delete(string userId)
+        {
+            var status = await _redisService.GetDB().KeyDeleteAsync(userId);
+            return status ? Response<bool>.Success(204) : Response<bool>.Fail("Basket Not Found", 404);
         }
     }
 }

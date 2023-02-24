@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MyCourse.Service.Catalog.Services
 {
-    public class CourseService:ICourseService
+    public class CourseService : ICourseService
     {
         private readonly IMongoCollection<Course> _courseCollection;
         private readonly IMongoCollection<Category> _categoryCollection;
@@ -23,7 +23,7 @@ namespace MyCourse.Service.Catalog.Services
             var client = new MongoClient(databaseSettings.ConnectionString);
             var database = client.GetDatabase(databaseSettings.DatebaseName);
             _courseCollection = database.GetCollection<Course>(databaseSettings.CourseCollectionName);
-            _categoryCollection = database.GetCollection<Category>(databaseSettings.CategoryCollectionName); 
+            _categoryCollection = database.GetCollection<Category>(databaseSettings.CategoryCollectionName);
 
             _mapper = mapper;
         }
@@ -34,7 +34,7 @@ namespace MyCourse.Service.Catalog.Services
 
             if (courses.Any())
             {
-                foreach(var course in courses)
+                foreach (var course in courses)
                 {
                     course.Category = await _categoryCollection.Find<Category>(x => x.Id == course.CategorId).FirstAsync();
                 }
@@ -53,9 +53,8 @@ namespace MyCourse.Service.Catalog.Services
             var course = await _courseCollection.Find<Course>(x => x.Id == id).FirstOrDefaultAsync();
 
             if (course == null)
-            {
                 return Response<CourseDto>.Fail("Course Not Found", 404);
-            }
+
             course.Category = await _categoryCollection.Find<Category>(x => x.Id == course.CategorId).FirstAsync();
 
             return Response<CourseDto>.Success(_mapper.Map<CourseDto>(course), 200);
@@ -64,9 +63,9 @@ namespace MyCourse.Service.Catalog.Services
         public async Task<Response<List<CourseDto>>> GetAllByUserIdAsync(string userId)
         {
 
-            var courses = await _courseCollection.Find<Course>(x => x.UserId == userId).ToListAsync(); 
+            var courses = await _courseCollection.Find<Course>(x => x.UserId == userId).ToListAsync();
 
-            if (courses.Any()) 
+            if (courses.Any())
             {
                 foreach (var course in courses)
                 {
@@ -82,9 +81,9 @@ namespace MyCourse.Service.Catalog.Services
         }
 
 
-        public async Task<Response<CourseDto>> CreateAsync(CourseCreateDto courseCreateDto) 
+        public async Task<Response<CourseDto>> CreateAsync(CourseCreateDto courseCreateDto)
         {
-            var newCourse =  _mapper.Map<Course>(courseCreateDto);
+            var newCourse = _mapper.Map<Course>(courseCreateDto);
 
             newCourse.CreateTime = DateTime.Now;
             await _courseCollection.InsertOneAsync(newCourse);
@@ -98,27 +97,20 @@ namespace MyCourse.Service.Catalog.Services
 
             var result = await _courseCollection.FindOneAndReplaceAsync(x => x.Id == courseUpdateDto.Id, updateCourse);
 
-            if(result == null)
-            {
+            if (result == null)
                 return Response<NoContent>.Fail("Course not found", 404);
-            }
 
             return Response<NoContent>.Success(204);
         }
 
         public async Task<Response<NoContent>> DeleteAsync(string id)
         {
+            var result = await _courseCollection.DeleteOneAsync(x => x.Id == id);
 
-            var result = await _courseCollection.DeleteOneAsync(x => x.Id ==id);
-
-            if (result.DeletedCount>0)
-            {
+            if (result.DeletedCount > 0)
                 return Response<NoContent>.Success(204);
-            }
-            else
-            {
-                return Response<NoContent>.Fail("Course not found", 404);
-            }
+
+            return Response<NoContent>.Fail("Course not found", 404);
         }
 
     }

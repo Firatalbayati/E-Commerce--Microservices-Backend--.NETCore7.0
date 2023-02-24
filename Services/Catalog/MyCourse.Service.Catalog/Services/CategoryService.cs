@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyCourse.Service.Catalog.Services
 {
-    public class CategoryService: ICategoryService
+    public class CategoryService : ICategoryService
     {
         private readonly IMongoCollection<Category> _categoryCollection;
 
@@ -19,7 +19,7 @@ namespace MyCourse.Service.Catalog.Services
         {
             var client = new MongoClient(databaseSettings.ConnectionString);
             var database = client.GetDatabase(databaseSettings.DatebaseName);
-            _categoryCollection = database.GetCollection <Category>(databaseSettings.CategoryCollectionName);
+            _categoryCollection = database.GetCollection<Category>(databaseSettings.CategoryCollectionName);
             _mapper = mapper;
         }
 
@@ -33,10 +33,8 @@ namespace MyCourse.Service.Catalog.Services
         {
             var category = await _categoryCollection.Find<Category>(x => x.Id == id).FirstOrDefaultAsync();
 
-            if(category == null)
-            {
+            if (category == null)
                 return Response<CategoryDto>.Fail("Category Not Found", 404);
-            }
 
             return Response<CategoryDto>.Success(_mapper.Map<CategoryDto>(category), 200);
         }
@@ -56,9 +54,7 @@ namespace MyCourse.Service.Catalog.Services
             var result = await _categoryCollection.FindOneAndReplaceAsync(x => x.Id == categoryUpdateDto.Id, updateCategory);
 
             if (result == null)
-            {
                 return Response<NoContent>.Fail("Category not found", 404);
-            }
 
             return Response<NoContent>.Success(204);
         }
@@ -68,13 +64,10 @@ namespace MyCourse.Service.Catalog.Services
             var result = await _categoryCollection.DeleteOneAsync(x => x.Id == id);
 
             if (result.DeletedCount > 0)
-            {
                 return Response<NoContent>.Success(204);
-            }
-            else
-            {
-                return Response<NoContent>.Fail("Category not found", 404);
-            }
+
+            return Response<NoContent>.Fail("Category not found", 404);
+
         }
     }
 }

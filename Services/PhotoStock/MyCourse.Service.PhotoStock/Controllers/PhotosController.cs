@@ -42,9 +42,7 @@ namespace MyCourse.Service.PhotoStock.Controllers
             var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/photos",photoUrl);
 
             if (!System.IO.File.Exists(path))
-            {
-                return CreateActionResultInstance(Response<NoContent>.Fail("Photo not found", 404));
-            }
+            return CreateActionResultInstance(Response<NoContent>.Fail("Photo not found", 404));
 
             System.IO.File.Delete(path);
             return CreateActionResultInstance(Response<NoContent>.Success(204));

@@ -24,7 +24,7 @@ namespace MyCourse.Service.Catalog.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult>GetById(string id)
+        public async Task<IActionResult> GetById(string id)
         {
             var response = await _courseService.GetByIdAsync(id);
             return CreateActionResultInstance(response);
