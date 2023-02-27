@@ -42,7 +42,7 @@ namespace MyCourse.Service.Discount.Services
 
         public async Task<Response<NoContent>> Create(Models.Discount discount)
         {
-            var status = await _dbConnection.ExecuteAsync("INSERT INTO discount (userid,rate,code) @VALUES (@UserId,@Rate,@Code)", discount);
+            var status = await _dbConnection.ExecuteAsync("INSERT INTO discount (userid,rate,code) VALUES (@UserId,@Rate,@Code)", discount);
 
             if (status > 0)
                 return Response<NoContent>.Success(204);
