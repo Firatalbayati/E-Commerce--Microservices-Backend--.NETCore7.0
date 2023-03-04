@@ -9,4 +9,8 @@
     <ProjectReference Include="..\MyCourse.Service.Order.Infrastructure\MyCourse.Service.Order.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+  </ItemGroup>
+
 </Project>
