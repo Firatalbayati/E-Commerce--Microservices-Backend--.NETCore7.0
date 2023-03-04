@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace MyCourse.Service.Order.Domain.OrderAggregate
 {
     public class Address : ValueObject
