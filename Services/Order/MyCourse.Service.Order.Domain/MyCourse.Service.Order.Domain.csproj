@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MyCourse.Service.Order.Domain.Core\MyCourse.Service.Order.Domain.Core.csproj" />
   </ItemGroup>
 
