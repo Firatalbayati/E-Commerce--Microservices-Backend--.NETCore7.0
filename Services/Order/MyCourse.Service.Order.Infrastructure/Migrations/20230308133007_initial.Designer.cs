@@ -10,7 +10,7 @@ using MyCourse.Service.Order.Infrastructure;
 namespace MyCourse.Service.Order.Infrastructure.Migrations
 {
     [DbContext(typeof(OrderDbContext))]
-    [Migration("20230306203850_initial")]
+    [Migration("20230308133007_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
