@@ -1,5 +1,6 @@
 
-IdentityServer => 5001
+Gateway          => 5000
+IdentityServer   => 5001
 
 Services
    -catalogAPI       => 5011

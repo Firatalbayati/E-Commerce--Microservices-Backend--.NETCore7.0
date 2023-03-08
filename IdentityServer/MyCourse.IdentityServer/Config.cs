@@ -19,6 +19,7 @@ namespace MyCourse.IdentityServer
             new ApiResource("resource_discount"){Scopes={"discount_fullpermission"}},
             new ApiResource("resource_order"){Scopes={"order_fullpermission"}},
             new ApiResource("resource_fakePayment"){Scopes={"fakePayment_fullpermission"}},
+            new ApiResource("resource_gateway"){Scopes={"gateway_fullpermission"}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -40,6 +41,7 @@ namespace MyCourse.IdentityServer
                 new ApiScope("discount_fullpermission","Discount API için full erişim"),
                 new ApiScope("order_fullpermission","Order API için full erişim"),
                 new ApiScope("fakePayment_fullpermission","FakePayment API için full erişim"),
+                new ApiScope("gateway_fullpermission","Gateway API için full erişim"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
             };
 
@@ -52,7 +54,7 @@ namespace MyCourse.IdentityServer
                   ClientId="WebMvcClient",
                   ClientSecrets={new Secret("secret".Sha256())},
                   AllowedGrantTypes=GrantTypes.ClientCredentials,
-                  AllowedScopes={ "catalog_fullpermission", "photo_stock_fullpermission",IdentityServerConstants.LocalApi.ScopeName}
+                  AllowedScopes={ "catalog_fullpermission", "photo_stock_fullpermission", "gateway_fullpermission", IdentityServerConstants.LocalApi.ScopeName}
                },
 
               new Client
@@ -62,7 +64,7 @@ namespace MyCourse.IdentityServer
                   AllowOfflineAccess=true,
                   ClientSecrets={new Secret("secret".Sha256())},
                   AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
-                  AllowedScopes={"basket_fullpermission","discount_fullpermission","order_fullpermission","fakePayment_fullpermission",
+                  AllowedScopes={"basket_fullpermission","discount_fullpermission","order_fullpermission","fakePayment_fullpermission","gateway_fullpermission",
                   IdentityServerConstants.StandardScopes.OpenId,
                   IdentityServerConstants.StandardScopes.Email,
                   IdentityServerConstants.StandardScopes.Profile,
