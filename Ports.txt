@@ -1,3 +1,4 @@
+        Backend
 
 Gateway          => 5000
 IdentityServer   => 5001
@@ -10,3 +11,8 @@ Services
    -orderAPI         => 5015
    -fakePaymentAPI   => 5016
 
+
+
+         Frontend
+
+ECommerceFrontend   => 5010
