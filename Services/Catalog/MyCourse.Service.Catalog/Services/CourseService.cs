@@ -36,7 +36,7 @@ namespace MyCourse.Service.Catalog.Services
             {
                 foreach (var course in courses)
                 {
-                    course.Category = await _categoryCollection.Find<Category>(x => x.Id == course.CategorId).FirstAsync();
+                    course.Category = await _categoryCollection.Find<Category>(x => x.Id == course.CategoryId).FirstAsync();
                 }
             }
             else
@@ -55,7 +55,7 @@ namespace MyCourse.Service.Catalog.Services
             if (course == null)
                 return Response<CourseDto>.Fail("Course Not Found", 404);
 
-            course.Category = await _categoryCollection.Find<Category>(x => x.Id == course.CategorId).FirstAsync();
+            course.Category = await _categoryCollection.Find<Category>(x => x.Id == course.CategoryId).FirstAsync();
 
             return Response<CourseDto>.Success(_mapper.Map<CourseDto>(course), 200);
         }
@@ -69,7 +69,7 @@ namespace MyCourse.Service.Catalog.Services
             {
                 foreach (var course in courses)
                 {
-                    course.Category = await _categoryCollection.Find<Category>(x => x.Id == course.CategorId).FirstAsync();
+                    course.Category = await _categoryCollection.Find<Category>(x => x.Id == course.CategoryId).FirstAsync();
                 }
             }
             else

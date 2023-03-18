@@ -20,10 +20,12 @@ namespace CatalogService.Models
 
 
         public Feature Feature { get; set; }
+
         [BsonRepresentation(BsonType.ObjectId)]
-        public string CategorId { get; set; }
+        public string CategoryId { get; set; }
+
         [BsonIgnore] 
-        public Category Category { get; set; }
+        public Category Category { get; set; } 
 
     }
 }
