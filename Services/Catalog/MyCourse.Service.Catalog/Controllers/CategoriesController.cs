@@ -19,21 +19,15 @@ namespace MyCourse.Service.Catalog.Controllers
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
-            var response = await _categoryService.GetAllAsync();
-            return CreateActionResultInstance(response);
+            var categories = await _categoryService.GetAllAsync();
+            return CreateActionResultInstance(categories);
         }
 
-        [HttpGet("GetById/{id}")]
+        [HttpGet("GetById")]
         public async Task<IActionResult> GetById(string id)
         {
-            var response = await _categoryService.GetByIdAsync(id);
-            return CreateActionResultInstance(response);
-        }
-        [HttpGet("GetAllByUserId/{userId}")]
-        public async Task<IActionResult> GetAllByUserId(string userId)
-        {
-            var response = await _categoryService.GetByIdAsync(userId);
-            return CreateActionResultInstance(response);
+            var category = await _categoryService.GetByIdAsync(id);
+            return CreateActionResultInstance(category);
         }
 
         [HttpPost("Create")]
@@ -50,7 +44,7 @@ namespace MyCourse.Service.Catalog.Controllers
             return CreateActionResultInstance(response);
         }
 
-        [HttpDelete("Delete/{id}")]
+        [HttpDelete("Delete")]
         public async Task<IActionResult> Delete(string id)
         {
             var response = await _categoryService.DeleteAsync(id);

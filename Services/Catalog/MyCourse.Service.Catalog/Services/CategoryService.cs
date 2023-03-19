@@ -18,14 +18,14 @@ namespace MyCourse.Service.Catalog.Services
         public CategoryService(IMapper mapper, IDatabaseSettings databaseSettings)
         {
             var client = new MongoClient(databaseSettings.ConnectionString);
-            var database = client.GetDatabase(databaseSettings.DatebaseName);
+            var database = client.GetDatabase(databaseSettings.DatabaseName);
             _categoryCollection = database.GetCollection<Category>(databaseSettings.CategoryCollectionName);
             _mapper = mapper;
         }
 
         public async Task<Response<List<CategoryDto>>> GetAllAsync()
         {
-            var categories = await _categoryCollection.Find(Category => true).ToListAsync();
+            var categories = await _categoryCollection.Find(category => true).ToListAsync();
             return Response<List<CategoryDto>>.Success(_mapper.Map<List<CategoryDto>>(categories), 200);
         }
 
