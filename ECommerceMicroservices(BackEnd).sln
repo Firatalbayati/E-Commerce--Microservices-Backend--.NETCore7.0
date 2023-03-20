@@ -48,11 +48,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCourse.Service.Order.Doma
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FakePayment", "FakePayment", "{4B2F651F-9F03-4FA1-86C4-FBCEE8304228}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCourse.Service.FakePayment", "Services\FakePayment\MyCourse.Service.FakePayment\MyCourse.Service.FakePayment.csproj", "{7CFCB2F3-82EC-46B4-B8EB-C88B8E858F4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCourse.Service.FakePayment", "Services\FakePayment\MyCourse.Service.FakePayment\MyCourse.Service.FakePayment.csproj", "{7CFCB2F3-82EC-46B4-B8EB-C88B8E858F4D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateways", "Gateways", "{4451889F-4BAF-46BA-AB5F-9F2AA414EE39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCourse.Gateway", "MyCourse.Gateway\MyCourse.Gateway.csproj", "{65F7C284-CA5F-4E55-81F7-4BEAA458E896}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCourse.Gateway", "MyCourse.Gateway\MyCourse.Gateway.csproj", "{65F7C284-CA5F-4E55-81F7-4BEAA458E896}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
