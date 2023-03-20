@@ -34,7 +34,7 @@ namespace MyCourse.Service.Discount.Services
         {
             var discount = (await _dbConnection.QueryAsync<Models.Discount>("SELECT * FROM discount WHERE id=@Id", new { Id = id })).SingleOrDefault();
 
-            if (discount == null)
+            if (discount is null)
                 return Response<Models.Discount>.Fail("Discount Not Found", 404);
 
             return Response<Models.Discount>.Success(discount, 200);
@@ -86,7 +86,7 @@ namespace MyCourse.Service.Discount.Services
 
             var hasDiscount = discount.FirstOrDefault();
 
-            if (hasDiscount == null)
+            if (hasDiscount is null)
                 return Response<Models.Discount>.Fail("Discount Not Found", 404);
 
             return Response<Models.Discount>.Success(hasDiscount, 200);

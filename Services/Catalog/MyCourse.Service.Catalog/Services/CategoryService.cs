@@ -33,7 +33,7 @@ namespace MyCourse.Service.Catalog.Services
         {
             var category = await _categoryCollection.Find<Category>(x => x.Id == id).FirstOrDefaultAsync();
 
-            if (category == null)
+            if (category is null)
                 return Response<CategoryDto>.Fail("Category Not Found", 404);
 
             return Response<CategoryDto>.Success(_mapper.Map<CategoryDto>(category), 200);
@@ -53,7 +53,7 @@ namespace MyCourse.Service.Catalog.Services
 
             var result = await _categoryCollection.FindOneAndReplaceAsync(x => x.Id == categoryUpdateDto.Id, updateCategory);
 
-            if (result == null)
+            if (result is null)
                 return Response<NoContent>.Fail("Category not found", 404);
 
             return Response<NoContent>.Success(204);

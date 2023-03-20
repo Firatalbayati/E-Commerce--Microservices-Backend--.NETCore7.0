@@ -51,7 +51,7 @@ namespace MyCourse.Service.Catalog.Services
         {
             var course = await _courseCollection.Find<Course>(x => x.Id == id).FirstOrDefaultAsync();
 
-            if (course == null)
+            if (course is null)
                 return Response<CourseDto>.Fail("Course Not Found", 404);
   
             course.Category = await _categoryCollection.Find<Category>(x => x.Id == course.CategoryId).FirstAsync();
@@ -96,7 +96,7 @@ namespace MyCourse.Service.Catalog.Services
 
             var result = await _courseCollection.FindOneAndReplaceAsync(x => x.Id == courseUpdateDto.Id, updateCourse);
 
-            if (result == null)
+            if (result is null)
                 return Response<NoContent>.Fail("Course Not Found", 404);
 
             return Response<NoContent>.Success(204);
