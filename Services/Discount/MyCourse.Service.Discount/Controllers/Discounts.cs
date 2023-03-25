@@ -30,8 +30,7 @@ namespace MyCourse.Service.Discount.Controllers
             return CreateActionResultInstance(await _discountService.GetAll());
         }
 
-        //api/discounts/4
-        [HttpGet("{id}")]
+        [HttpGet("GetById")]
         public async Task<IActionResult> GetById(int id)
         {
             var discount = await _discountService.GetById(id);
@@ -51,14 +50,13 @@ namespace MyCourse.Service.Discount.Controllers
             return CreateActionResultInstance(await _discountService.Update(discount));
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete")]
         public async Task<IActionResult> Delete(int id)
         {
             return CreateActionResultInstance(await _discountService.Delete(id));
         }
 
-        [HttpGet]
-        [Route("/api/[controller]/[action]/{code}")]
+        [HttpGet("GetByCode")]
         public async Task<IActionResult> GetByCode(string code)
         {
             var userId = _sharedIdentityService.GetUserId;
