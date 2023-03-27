@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MyCourse.Service.FakePayment.Models;
 using MyCourse.Shared.ControllerBases;
 using MyCourse.Shared.Dtos;
 using System;
@@ -15,7 +16,7 @@ namespace MyCourse.Service.FakePayment.Controllers
     {
 
         [HttpPost("ReceivePayment")]
-        public IActionResult ReceivePayment()
+        public IActionResult ReceivePayment(PaymentDto paymentDto)
         {
             return CreateActionResultInstance(Shared.Dtos.Response<NoContent>.Success(200));
         }
