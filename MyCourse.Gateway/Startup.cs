@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MyCourse.Gateway.DelegateHandlers;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using System;
@@ -25,6 +26,7 @@ namespace MyCourse.Gateway
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient<TokenExhangeDelegateHandler>();
 
             services.AddAuthentication().AddJwtBearer("GatewayAuthenticationScheme", options => 
             {
@@ -33,7 +35,7 @@ namespace MyCourse.Gateway
                 options.RequireHttpsMetadata = false;
             });
 
-            services.AddOcelot();
+            services.AddOcelot().AddDelegatingHandler<TokenExhangeDelegateHandler>(); 
         }
 
         async public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
