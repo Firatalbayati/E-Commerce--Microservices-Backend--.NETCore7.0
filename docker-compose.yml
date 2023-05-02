@@ -17,6 +17,11 @@ services:
     build:
       context: .
       dockerfile: Services/Catalog/MyCourse.Service.Catalog/Dockerfile
+  identityserver.api:
+    image: identityserver_api_image
+    build:
+      context: .
+      dockerfile: IdentityServer/MyCourse.IdentityServer/Dockerfile
 
 volumes:    
   catalogdb_volume:
