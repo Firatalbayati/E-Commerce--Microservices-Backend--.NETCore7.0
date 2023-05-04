@@ -52,6 +52,11 @@ services:
     build:
       context: .
       dockerfile: MyCourse.Gateway/Dockerfile
+  aspnetcoremvc.web:
+    image: aspnetcoremvc.web_image
+    build:
+      context: .
+      dockerfile: C:/Users/firat/source/repos/ECommerceMicroservicesFrontend/ECommerceMicroservicesFrontend/Dockerfile
 
 volumes:    
   catalogdb_volume:
