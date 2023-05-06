@@ -1,44 +1,84 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using MassTransit;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using MyCourse.Service.Catalog.Dtos;
 using MyCourse.Service.Catalog.Services;
-using System;
-using System.Collections.Generic;
+using MyCourse.Service.Catalog.Settings;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Reflection;
 
-namespace CatalogService
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddControllers(opt =>
 {
-    public class Program
+    opt.Filters.Add(new AuthorizeFilter());
+});
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddMassTransit(x =>
+{
+    //RabbitMQ Default Port : 5672
+    x.UsingRabbitMq((context, cfg) =>
     {
-        public static void Main(string[] args)
+        cfg.Host(builder.Configuration["RabbitMQUrl"], "/", host =>
         {
-            var host = CreateHostBuilder(args).Build();
+            host.Username("guest");
+            host.Password("guest");
+        });
+    });
+});
 
-            using (var scope = host.Services.CreateScope())
-            {
-                var serviceProvider = scope.ServiceProvider;
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(Options => {
+    Options.Authority = builder.Configuration["IdentityServerURL"];
+    Options.Audience = "resource_catalog";
+    Options.RequireHttpsMetadata = false;
+});
 
-                var categoryService = serviceProvider.GetRequiredService<ICategoryService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICourseService, CourseService>();
 
-                if (!categoryService.GetAllAsync().Result.Data.Any())
-                {
-                    categoryService.CreateAsync(new CategoryCreateDto { Name = "Asp.net Core Kursu" }).Wait();
-                    categoryService.CreateAsync(new CategoryCreateDto { Name = "Asp.net Core API Kursu" }).Wait();
-                }
-            }
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            host.Run();
-        }
+builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
+builder.Services.AddSingleton<IDatabaseSettings>(sp =>
+{
+    return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
+});
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+
+var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+
+    var categoryService = serviceProvider.GetRequiredService<ICategoryService>();
+
+    if (!(await categoryService.GetAllAsync()).Data.Any())
+    {
+       await  categoryService.CreateAsync(new CategoryCreateDto { Name = "Asp.net Core Kursu" });
+       await  categoryService.CreateAsync(new CategoryCreateDto { Name = "Asp.net Core API Kursu" });
     }
 }
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
+app.Run();
