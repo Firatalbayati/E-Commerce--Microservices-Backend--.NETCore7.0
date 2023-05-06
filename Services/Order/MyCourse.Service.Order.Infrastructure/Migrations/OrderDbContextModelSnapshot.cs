@@ -92,7 +92,7 @@ namespace MyCourse.Service.Order.Infrastructure.Migrations
 
                             b1.HasKey("OrderId");
 
-                            b1.ToTable("Orders");
+                            b1.ToTable("ordering", "");
 
                             b1.WithOwner()
                                 .HasForeignKey("OrderId");
