@@ -12,7 +12,7 @@ using MyCourse.Service.Order.Infrastructure;
 namespace MyCourse.Service.Order.Infrastructure.Migrations
 {
     [DbContext(typeof(OrderDbContext))]
-    [Migration("20230506212228_initial")]
+    [Migration("20230509205604_initial")]
     partial class initial
     {
         /// <inheritdoc />
