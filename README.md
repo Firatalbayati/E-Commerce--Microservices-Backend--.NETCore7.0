@@ -100,35 +100,35 @@
 <dl>
   <h4>Asp.Net Core MVC Microservice</h4>
   <dd>Our UI microservice, which will display the data received from microservices to the user and be responsible for interacting with the user.</dd>
- <dd><a href="https://github.com/Firatalbayati/E-Commerce--Microservices-Frontend--.NETCore7.0">E-Commerce--Microservices-Frontend--.NETCore7.0</a></dd>
+ <dd><a href="https://github.com/Firatalbayati/E-Commerce--Microservices-Frontend--.NETCore7.0">ECommerce--Services</a></dd>
 </dl>
 <br>
 <br>
 <br>
 <a href="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/0b193a33-f5eb-4f01-b1e0-366a462b774d" target="_blank">
-<img width="350" height="250" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/0b193a33-f5eb-4f01-b1e0-366a462b774d"/>
+<img width="350" height="220" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/0b193a33-f5eb-4f01-b1e0-366a462b774d"/>
 </a>
 <a href="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/37c84244-6db7-43ff-b8cc-f599b2aee71c" target="_blank">
-<img width="350" height="250" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/37c84244-6db7-43ff-b8cc-f599b2aee71c"/>
+<img width="350" height="220" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/37c84244-6db7-43ff-b8cc-f599b2aee71c"/>
 </a>
 <a href="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/9f3d8d56-880a-449d-9b12-a81557e16931" target="_blank">
-<img width="350" height="250" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/9f3d8d56-880a-449d-9b12-a81557e16931"/>
+<img width="350" height="220" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/9f3d8d56-880a-449d-9b12-a81557e16931"/>
 </a>
 <a href="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/8f314a6b-9c8a-4f7c-9212-5f1bb5083be5" target="_blank">
-<img width="350" height="250" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/8f314a6b-9c8a-4f7c-9212-5f1bb5083be5"/>
+<img width="350" height="220" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/8f314a6b-9c8a-4f7c-9212-5f1bb5083be5"/>
 </a>
 <a href="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/a56e75b0-8ca6-4067-9ffc-9902e888c223" target="_blank">
-<img width="350" height="250" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/a56e75b0-8ca6-4067-9ffc-9902e888c223"/>
+<img width="350" height="220" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/a56e75b0-8ca6-4067-9ffc-9902e888c223"/>
 </a>
 <a href="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/cad40bdf-db28-457b-a909-80cbcfe5f5cb" target="_blank">
-<img width="350" height="250" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/cad40bdf-db28-457b-a909-80cbcfe5f5cb"/>
+<img width="350" height="220" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/cad40bdf-db28-457b-a909-80cbcfe5f5cb"/>
 </a>
 <a href="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/42560711-5f2f-412d-8437-66c4bc5efe0a" target="_blank">
-<img width="350" height="250" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/42560711-5f2f-412d-8437-66c4bc5efe0a"/>
+<img width="350" height="220" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/42560711-5f2f-412d-8437-66c4bc5efe0a"/>
 </a>
 <a href="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/859e696f-ca54-407c-880d-60429f974d47" target="_blank">
-<img width="350" height="250" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/859e696f-ca54-407c-880d-60429f974d47"/>
+<img width="350" height="220" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/859e696f-ca54-407c-880d-60429f974d47"/>
 </a>
 <a href="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/d7b66939-a907-4161-b6eb-94ecf4245033" target="_blank">
-<img width="350" height="250" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/d7b66939-a907-4161-b6eb-94ecf4245033"/>
+<img width="350" height="220" style="border-radius:2%;" src="https://github.com/Firatalbayati/E-Commerce--Microservices-Backend--.NETCore7.0/assets/47159612/d7b66939-a907-4161-b6eb-94ecf4245033"/>
 </a>
